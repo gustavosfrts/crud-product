@@ -1,0 +1,246 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API Produtos",
+        "version": "1.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000/api"
+        }
+    ],
+    "paths": {
+        "http://localhost:8000/api": {},
+        "/login": {
+            "post": {
+                "description": "Login",
+                "operationId": "0e8ef7f638a6aae9c386fcd42d75c2d2",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "gustavo@email.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "123456"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        },
+        "/product/list": {
+            "post": {
+                "description": "List all products",
+                "operationId": "43158e37ad7ce9333eff7cff492ef32b",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "filtro": {
+                                        "type": "string",
+                                        "example": null
+                                    },
+                                    "order": {
+                                        "type": "string",
+                                        "example": "asc"
+                                    },
+                                    "orderCampo": {
+                                        "type": "string",
+                                        "example": null
+                                    },
+                                    "quantPagina": {
+                                        "type": "integer",
+                                        "example": 20
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/product/list/{id}": {
+            "get": {
+                "description": "List a single product with his respective id",
+                "operationId": "8619bfd1b7949ac36adb4fd172cd3cf0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/product/create": {
+            "post": {
+                "description": "Create a new product",
+                "operationId": "8d3e3ca504797ae00b38d33fd1ec3917",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "quantidade": {
+                                        "type": "integer",
+                                        "example": 5
+                                    },
+                                    "valorUnitario": {
+                                        "type": "integer",
+                                        "example": 9800
+                                    },
+                                    "nomeProduto": {
+                                        "type": "string",
+                                        "example": "Relógio"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/product/update/{id}": {
+            "put": {
+                "description": "Update an existent product",
+                "operationId": "f3c53d9f6a2ab1f33980753b5e7c1f45",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "quantidade": {
+                                        "type": "integer",
+                                        "example": 5
+                                    },
+                                    "valorUnitario": {
+                                        "type": "integer",
+                                        "example": 9800
+                                    },
+                                    "nomeProduto": {
+                                        "type": "string",
+                                        "example": "Relógio"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/product/delete/{id}": {
+            "delete": {
+                "description": "Delete an existent product",
+                "operationId": "4988c904abc12a8f18a790f9b6a89c0b",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "example": 1
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}
