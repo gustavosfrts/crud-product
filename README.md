@@ -16,3 +16,6 @@
 
 ## Comando para rodar o projeto
 php artisan serve
+
+## URL para o Swagger
+localhost:8000/api/documentation
