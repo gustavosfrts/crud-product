@@ -13,3 +13,6 @@
 * composer require darkaonline/l5-swagger
 * php artisan jwt:secret
 * php artisan migrate --seed
+
+## Comando para rodar o projeto
+php artisan serve
