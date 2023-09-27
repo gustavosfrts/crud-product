@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
+    private Produto $Produto;
     public function __construct()
     {
         $this->Produto = new Produto();

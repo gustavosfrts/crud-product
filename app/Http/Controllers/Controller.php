@@ -41,10 +41,14 @@ class Controller extends BaseController
      * )
      */
     public function login(Request $request) {
-        $user = auth('api')->attempt(['email' => $request->email, 'password' => $request->password]);
-        if($user){
-            return response()->json(['bearer' => $user], 200);
+        try {
+            $user = auth('api')->attempt(['email' => $request->email, 'password' => $request->password]);
+            if($user){
+                return response()->json(['bearer' => $user], 200);
+            }
+            return response()->json(['error' => 'Wrong email or password. Try again.'], 400);
+        } catch (\Throwable $th) {
+            return response()->json(['error' => 'Internal error. Please try again later.'], 500);
         }
-        return response()->json(['error' => 'Wrong email or password. Try again.'], 400);
     }
 }
